@@ -33,5 +33,8 @@ describe Array do
     it 'should be able to sum the numbers from 1 to 4 with just :+ as an argument' do
       expect(array.injection(:+)).to eq 10
     end
+    it 'should be able to sum the numbers from 1 to 5 with 0 and :+ passed as arguments' do
+      expect(array_two.injection(0, :+)).to eq 15
+    end
   end
 end

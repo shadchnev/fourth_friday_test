@@ -8,6 +8,13 @@ class Array
         result = my_proc.call(result, element)
       end
       result
+    elsif args.size == 2
+      result = args.first
+      my_proc = proc { |result, element| result = result.send(args.last, element) }
+      self.each_with_index do |element, index|
+        result = my_proc.call(result, element)
+      end
+      result
     else
       result = args.first || self.first
       self.each_with_index do |element, index|
