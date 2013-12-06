@@ -20,4 +20,7 @@ class Takeaway
     end
     total
   end
+  def order_ok? (total)
+    order_total == Money.new(total * 100, "GBP")
+  end
 end

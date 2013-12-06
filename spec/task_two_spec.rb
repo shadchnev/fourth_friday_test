@@ -13,7 +13,13 @@ describe Takeaway do
       expect(takeaway.order_total).to eq Money.new(100090, "GBP")
     end
   end
-  context '#place_order' do
+  context '#order_ok?' do
+    it 'should return true if the order is OK' do
+      expect(takeaway.order_ok?(1000.9)).to be_true
+    end
+    it 'should return false if the order is not ok' do
+      expect(takeaway.order_ok?(1000)).to be_false
+    end
   end
 
   def capture_stdout(&block)
