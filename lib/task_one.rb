@@ -1,5 +1,5 @@
 class Array
-  def injection
+  def injection(*args)
     sum = 0
     self.each do |element|
       sum += element
