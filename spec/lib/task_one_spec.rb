@@ -25,5 +25,10 @@ describe Array do
     it 'should be able to multiply the values of [3, 4, 5] when passed 3 as an argument' do
       expect([3, 4, 5].injection(3) { |product, n| product * n} ).to eq 180
     end
+    it 'should be able to return the longest word' do
+      expect(%w[one two three four].injection do |longest, word|
+        longest.length > word.length ? longest : word
+      end).to eq "three"
+    end
   end
 end
