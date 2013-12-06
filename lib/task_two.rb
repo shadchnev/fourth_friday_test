@@ -29,4 +29,7 @@ class Takeaway
       raise "The total isn't correct"
     end
   end
+  def order_complete_message
+    "Thank you! Your order was placed and will be delivered before #{(1.hour.from_now).strftime("%H:%M")}"
+  end
 end
