@@ -1,9 +1,9 @@
 class Array
-  def injection(*args)
-    sum = 0
+  def injection(*args, &block)
+    result = args.first || self.first
     self.each do |element|
-      sum += element
+      result = yield(result, element)
     end
-    sum + (args.empty? ? 0 : args.first)
+    result
   end
 end
