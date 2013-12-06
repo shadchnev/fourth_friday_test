@@ -1,5 +1,20 @@
 require './lib/task_two'
 
 describe Takeaway do
-  
+  context '#list' do
+    it 'should list the available dishes + prices' do
+      output = capture_stdout { Takeaway.list }
+      expect(output).to eq "Bliny\t£0.45\nCaviar\t£1000.00\nKasha\t£1.00\nKnish\t£0.55\n"
+    end
+  end
+  def capture_stdout(&block)
+    original_stdout = $stdout 
+    $stdout = fake = StringIO.new
+    begin
+      yield
+    ensure
+      $stdout = original_stdout
+    end
+      fake.string
+  end
 end
