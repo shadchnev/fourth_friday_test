@@ -23,4 +23,10 @@ class Takeaway
   def order_ok? (total)
     order_total == Money.new(total * 100, "GBP")
   end
+  def place_order (total)
+    if order_ok? (total)
+    else
+      raise "The total isn't correct"
+    end
+  end
 end

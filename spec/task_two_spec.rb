@@ -21,6 +21,11 @@ describe Takeaway do
       expect(takeaway.order_ok?(1000)).to be_false
     end
   end
+  context '#place_order' do
+    it 'should raise an error if order is not ok' do
+      expect { takeaway.place_order(1000) }.to raise_error RuntimeError
+    end
+  end
 
   def capture_stdout(&block)
     original_stdout = $stdout 
