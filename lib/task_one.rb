@@ -4,6 +4,6 @@ class Array
     self.each do |element|
       sum += element
     end
-    sum
+    sum + (args.empty? ? 0 : args.first)
   end
 end

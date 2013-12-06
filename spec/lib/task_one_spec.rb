@@ -13,5 +13,8 @@ describe Array do
     it 'should be able to sum the values of [1, 2, 3, 4] when passed 0 as an argument' do
       expect(array.injection(0) { |sum, n| sum + n }).to eq 10
     end
+    it 'should be able to sum the values of [1, 2, 3, 4] when passed 10 as an argument' do
+      expect(array.injection(10) { |sum ,n| sum + n } ).to eq 20
+    end
   end
 end
