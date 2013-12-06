@@ -30,5 +30,8 @@ describe Array do
         longest.length > word.length ? longest : word
       end).to eq "three"
     end
+    it 'should be able to sum the numbers from 1 to 4 with just :+ as an argument' do
+      expect(array.injection(:+)).to eq 10
+    end
   end
 end
