@@ -19,5 +19,8 @@ describe Array do
     it 'should be able to multiply the values of [1, 2, 3, 4]' do
       expect(array.injection { |product, n| product * n} ).to eq 24
     end
+    it 'should be able to multiply the values of [1, 2, 3, 4] when passed 10 as an argument' do
+      expect(array.injection(10) { |product, n| product * n} ).to eq 240
+    end
   end
 end
