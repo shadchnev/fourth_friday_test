@@ -7,6 +7,17 @@ class Takeaway
       puts "#{dish}\t£#{price}"
     end
   end
-  # def initialize(options = {})
-  #   defaults = { :Bliny =>}
+
+  attr_accessor :options
+  def initialize(options = {})
+    defaults = { :Bliny => 0, :Caviar => 0, :Kasha => 0, :Knish => 0}
+    @options = defaults.merge(options)
+  end
+  def order_total
+    total = Money.new(0, "GBP")
+    options.each do |dish, quantity|
+      total += MENU[dish] * quantity
+    end
+    total
+  end
 end
