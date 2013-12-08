@@ -1,5 +1,4 @@
 require './lib/task_two'
-require 'rails'
 
 describe Takeaway do
   let(:takeaway) { Takeaway.new ({ :Bliny => 2, :Caviar => 1 }) }
@@ -23,13 +22,20 @@ describe Takeaway do
     end
   end
   context '#place_order' do
-    it 'should raise an error if order is not ok' do
+    it 'should raise an error if order is not correct' do
       expect { takeaway.place_order(1000) }.to raise_error RuntimeError
+    end
+    it 'should validate and send a success message when placing an order' do
+      takeaway.stub(:order_ok?) { true }
+      takeaway.stub(:order_complete_message) {"success"}
+      takeaway.should_receive(:order_ok?)
+      takeaway.should_receive(:order_complete_message)
+      takeaway.place_order("xxx")
     end
   end
   context '#order_complete_message' do
     it 'should return the correct message for an order' do
-      expect(takeaway.order_complete_message()).to eq "Thank you! Your order was placed and will be delivered before #{(1.hour.from_now).strftime("%H:%M")}"
+      expect(takeaway.order_complete_message()).to eq "Thank you! Your order was placed and will be delivered before #{(Time.now + 3600).strftime("%H:%M")}"
     end
   end
 
