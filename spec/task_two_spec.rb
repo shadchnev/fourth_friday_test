@@ -39,6 +39,7 @@ describe Takeaway do
     end
   end
 
+  # Cool!
   def capture_stdout(&block)
     original_stdout = $stdout 
     $stdout = fake = StringIO.new

@@ -10,3 +10,5 @@ class Array
     result
   end
 end
+
+# Awesome.
